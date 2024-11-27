@@ -1,0 +1,516 @@
+body{
+    font-family: sans-serif;
+    scroll-behavior: smooth;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(199, 197, 197, 0.45) 0px 20px 10px -10px;
+    flex-wrap:wrap;
+}
+
+#nav{
+    min-width:70vw;
+    /* padding: 10px; */
+    overflow: hidden;
+}
+
+#logo{
+    width:10vw;
+}
+
+#nav1{
+    display:flex;
+    align-items: center;
+    height: 4vw;
+    gap: 1vw;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    overflow: hidden;
+}
+
+
+.fa-magnifying-glass{
+    position: absolute;
+    margin-left: 12vw;
+    color: rgb(32, 158, 28);
+    font-size: 1.1vw;
+}
+
+#nav1 > input {
+    width: 31vw;
+    height: 2.7vw;
+    color: rgb(32, 158, 28);
+    padding-left: 3vw;
+    border-radius: 5px;
+    border:1px solid rgb(207, 203, 203);
+    font-size: 1vw;
+}
+
+#selectLocation{
+    width: 11vw;
+    height: 3vw;
+    border-radius: 5px;
+    border:none;
+    font-size: 1vw;
+}
+
+#selectLocation > i{
+    font-size: 1.5vw;
+}
+
+#loginBtn {
+    width: 8vw;
+    height: 3vw;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-size: 1vw;
+    border:none;
+    text-decoration: none;
+}
+
+#loginBtn a{
+    text-decoration: none;
+    color: white;
+}
+
+#basket{
+    background-color: rgb(212, 145, 145);
+    padding: 0.5vw;
+    border-radius: 5px;
+    color: white;
+}
+
+.fa-basket-shopping{
+    border-radius: 50%;
+    background-color: brown;
+    padding: 5px;
+}
+
+#basketCount{
+    width:0.5vw;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    font-size: 0.8vw;
+    position: relative;
+    right: 2vw;
+    top: 0.5vw;
+    text-align: center;
+    border-radius: 5px;
+
+}
+
+/* =================================================
+  --------------------nav 2----------------------- 
+==================================================*/
+
+
+#nav2{
+    margin-top: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+    padding: 0.5vw 0vw;
+}
+
+#nav2 > select{
+    background-color: #5E9400;
+}
+
+#category{
+    width: 10vw;
+    height: 3vw;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.cat_list{
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.cat_list:hover{
+    background-color: grey;
+}
+
+#list > ul{
+    display: flex;
+    text-decoration: none;
+    gap:1.5vw;
+    list-style-type: none;
+    font-size: 1vw;
+    margin-left: 0vw;
+}
+#list1{
+    margin: 0px 20px 0px -20px;
+}
+
+#list2, #list3,#list4{
+    width: 4.5vw;
+}
+
+#list5{
+    width:8vw
+}
+
+
+#line{
+    width: 1px;
+    height:2.5vw;
+    background-color: grey;
+}
+
+#smartBasketBtn , #offerBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5vw;
+    width: 6.5vw;
+    height:2.5vw;
+    border-radius: 30px;
+    font-size: 1vw;
+    border:none;
+}
+
+#smartBasketBtn > i, #offerBtn > i {
+    color: rgb(38, 145, 38);
+    margin-right: 0.2vw;
+}
+
+
+/* =================================================
+  --------------------Container 2----------------------- 
+==================================================*/
+
+
+#container2{
+    margin-top: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#banchesOfBtn{
+    min-width:70vw;
+    margin-top: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5vw;
+}
+
+#banchesOfBtn > button{
+    width: 10vw;
+    height: 3.5vw;
+    border-radius: 5px;
+    overflow: hidden;
+    font-weight: 800;
+    border:none;
+    font-size: 0.8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#banchesOfBtn > button >img{
+    width : 11vw;
+}
+
+#ayurveda{
+    background-color: #4C6020;
+    color: white;
+}
+
+
+/* =================================================
+--------------------caintainer2 heading--------------------
+==================================================*/
+
+#dataDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vw;
+}
+
+#dataContainer{
+    width:66.5vw;
+    background-color: #F7F7F7;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+#smartBasketHeading {
+    display: flex;
+    align-items: center;
+    padding: 0px 1vw;
+}
+
+#prev-next-btn{
+    margin-left: auto;
+    
+}
+
+#prev-next-btn > span > a{
+    color: rgb(100, 99, 99);
+    padding: 0px 1vw;
+    font-size: 1vw;
+    font-weight: 550;
+}
+
+#prev-next-btn > span > a:hover{
+    color: black;
+}
+
+#prev-next-btn > button{
+    font-size: 1.5vw;
+    font-weight: 600;
+    background-color: white;
+    color: rgb(121, 118, 118);
+    padding: 2px 0.6vw;
+    margin: 0.3vw;
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(57, 57, 58, 0.2) 0px 8px 24px;
+}
+
+
+/* =================================================
+-------------------- Basket Data --------------------
+==================================================*/
+
+
+#smartBasket, #bestSeller{
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7vw;
+
+}
+
+#smartBasketChild{
+    background-color: white;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 1vw;
+    border-radius: 10px;
+    font-size: 1vw;
+}
+
+#smartBasketChild > img{
+ width: 13.5vw;
+ height:13.5vw;
+ border-radius:10px;
+ border : 1px solid rgb(231, 228, 228);
+}
+
+#smartBasketChild > #dis{ /* dis means discount */
+    position: absolute;
+    margin: 0px ;
+    padding:  7px 10px;
+    border-radius: 10px 0px;
+    background-color: #476F00;
+    color: white;
+    font-size: 0.7vw;
+}
+
+#vegSymbol{
+   width: 1vw;
+   height: 1vw;
+   border: 1px solid green;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   bottom: 2vw;
+   left:0.5vw;
+}
+
+#vegSymbol > div{
+    width: 0.7vw;
+    height: 0.7vw;
+    background-color: green;
+    border-radius: 50%;
+ }
+
+ #fresho{
+    opacity: 50%;
+ }
+
+ select{
+    width: 13.5vw;
+    padding: 0.5vw;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 5px;
+    color: rgb(104, 101, 101);
+    margin-top: 2vw;
+ }
+
+ #org-dis-amt{
+    display:flex;
+    text-align: center;
+    gap:0.5vw;
+ }
+
+ #org-dis-amt > i, #org-dis-amt >p{
+    font-size: 0.8vw;
+    margin-top: 1.5vw;
+    opacity: 50%;
+ }
+
+ #bookmark , #add{
+    margin-top: 2vw;
+    padding: 0.5vw 0.7vw;
+    font-weight: 700;
+    font-size: 1vw;
+    background-color: white;
+    border: 1px solid rgb(211, 206, 206);
+    border-radius: 5px;
+ }
+
+ #add{
+    margin: 0%;
+    margin-left: 0.5vw;
+    width:10.5vw;
+    color: rgb(190, 74, 74);
+    border: 1px solid rgb(247, 161, 161);
+ }
+
+ #add:hover{
+    background-color: rgb(216, 42, 42);
+    color:white;
+ }
+
+
+/* =================================================
+--------------------bank Basket Data --------------------
+==================================================*/
+
+#bankOffers{
+    display: flex;
+    justify-content: center;
+}
+
+#bankOfferBasket{
+    margin: 0vw 0.5vw;
+}
+
+#bankOfferBasket > a {
+    text-decoration: none;
+}
+
+#bankOfferBasket:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+ #bankOfferBasket > img{
+    width : 15.3vw;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    border-radius: 10px;
+ }
+
+ /* =================================================
+--------------------your Daily Staples --------------------
+==================================================*/
+
+#yourDailyStaples > #bankOfferBasket> a > img{
+   width:9.8vw;
+}
+
+#beverage > #bankOfferBasket> a > img{
+   width:9.8vw;
+}
+
+/* =================================================
+-------------------- slider --------------------
+==================================================*/
+
+
+#slideShowContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#slideShowContainer > img {
+    width:67vw;
+    border-radius: 20px;
+    margin: 1vw 0vw;
+}
+
+
+/* =================================================
+--------------------about us--------------------
+==================================================*/
+
+#aboutUs{
+    width:68vw;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    font-size: 1vw;
+}
+
+#contactUs{
+    background-color: black;
+    color: white;
+    font-size: 1vw;
+    padding: 2vw 0vw;
+    display: flex;
+    justify-content: center;
+}
+
+#list-container{
+    width: 70vw;
+    display: flex;
+    gap: 5vw;
+}
+
+#list-first, #list-second,#list-third{
+    width:30vw;
+}
+
+#list-first >ul > li, #list-second >ul > li{
+   margin: 1vw 0vw;
+   list-style-type: none;
+}
+
+#list-third>img{
+    width : 11vw;
+    margin : 1vw 0vw;
+}
+
+#store{
+    display: flex;
+    gap : 1vw;
+    margin : 1vw 0vw;
+}
+
+#store > img{
+    width: 8vw;
+}
+
+#icons > i{
+    font-size: 2vw;
+    margin:0.5vw;
+}
+
+
+/* =================================================
+--------------------extra styling--------------------
+==================================================*/
+
+
+button, li{
+    cursor: pointer;
+}

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basket data</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/746bcefbb6.js" crossorigin="anonymous"></script>
+    <script src="import.js"></script>
+
+    <style>
+        #container {
+            justify-content: center;
+        }
+
+        #importHeading {
+            width: 70vw;
+        }
+
+        #resultDiv {
+            width: 70vw;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            row-gap: 1vw;
+            margin: 1vw 0vw;
+        }
+
+        #footer {
+            display: flex;
+            justify-content: center;
+            align-items: end;
+        }
+
+        #checkOut {
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+            width: 20vw;
+            padding: 1vw;
+            text-align: center;
+        }
+
+        img {
+            width: 16vw;
+        }
+
+        #storedData {
+            display: flex;
+            justify-content: center;
+        }
+
+        #total_amount{
+            display: flex;
+            justify-content: center;
+            align-items: end;
+        }
+
+        select,
+        button {
+            height: fit-content;
+        }
+
+        #dataContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 1vw;
+            margin: 2vw 0vw;
+        }
+
+        #footerImport {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="importHeading"></div>
+    </div>
+
+    <div id="storedData">
+        <div id="dataContainer" style="width: 75%;">
+            
+        </div>
+    </div>
+
+    <div id="total_amount">
+        <h3>Total = <span id="total"> 0 </span></h3>
+    </div>
+
+    <div id="footer">
+       <button id="checkOut"> Check Out</button>
+    </div>
+
+    <div id="footerImport"></div>
+
+</body>
+
+<script src="index.js"></script>
+<script>
+
+    window.onload = function () {
+        let importData = localStorage.getItem('navbar');
+        document.getElementById('importHeading').innerHTML = importData;
+
+        let footerData = localStorage.getItem('footer');
+        document.getElementById('footerImport').innerHTML = footerData;
+
+        // let importAddBtnData = localStorage.getItem('addBtnData');
+        // document.getElementById('dataContainer').innerHTML = importAddBtnData;
+
+        basketData()
+    }
+
+    let dataContainer = document.getElementById('dataContainer')
+
+    async function basketData() {
+        await fetch('http://localhost:3001/basket/getData')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(`Fetched :`, data);
+                // Process and display the data
+                checkOutData(data, dataContainer);
+                total_Amount(data)
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    function total_Amount(result){
+        let Total_Amt = 0
+        result.forEach((ele)=>{
+            Total_Amt += ele.kg * (ele.original_price - (Math.ceil(ele.original_price * ele.discount / 100)))
+            let total = document.getElementById("total")
+            total.innerText = Total_Amt
+        })
+    }
+
+
+    function checkOutData(result, id) {
+        id.innerText = "";
+        result.forEach((ele) => {
+            let div = document.createElement("div")
+            div.id = "smartBasketChild";
+
+            div.innerHTML = `
+            <p id="dis">${ele.discount}%OFF </p>
+
+            <img src=${ele.image} />
+            
+            <div id=vegSymbol>
+                <div></div>
+            </div>
+
+            <p id="fresho"> ${ele.fresho} </p>
+            <p id="title"> ${ele.name} </p>
+
+            <span> kg - ${ele.kg}</span>
+
+            <div id="org-dis-amt">
+                <h4><i class="fa-solid fa-indian-rupee-sign"></i>
+                ${ele.original_price - (Math.ceil(ele.original_price * ele.discount / 100))} </h4>
+                <p><del><i class="fa-solid fa-indian-rupee-sign"></i>
+                ${ele.original_price}</del> </p>
+            </div>
+
+            <b> Total = ${ele.kg * (ele.original_price - (Math.ceil(ele.original_price * ele.discount / 100)))}</b><br><br>
+            `
+            // <button id="add" onclick="addBasket(${(ele)})"> Add </button>
+            let addButton = document.createElement("button");
+            addButton.id = "add";
+            addButton.textContent = "Delete";
+            addButton.addEventListener("click", () => deleteBasketProduct(ele));
+            div.appendChild(addButton);
+            id.append(div);
+
+        })
+    }
+
+
+    //function for handling deleting products
+    async function deleteBasketProduct(ele){
+        try{
+        const response = await fetch('http://localhost:3001/basket/deleteData',{
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(ele),
+        })
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Product is successfully deleted on your Basket');
+            console.log('Server Response:', result);
+            
+            //for update changes in DOM
+            window.location.reload()
+        } else {
+            alert('Product not found on your Basket.');
+            console.error('Error:', result);
+        }  
+    }catch(error){
+        console.log(error)
+    }  
+    }
+
+    // const checkout = document.getElementById('checkOut')
+
+    // checkout.addEventListener(click,async()=>{
+        
+    //     const response = await fetch('http://localhost:3001/checkout',{
+    //         method : 'DELETE'
+    //     })
+
+    //     if(response.ok){
+    //         window.location.href = 'paymentDone.html'
+    //     }
+    // })
+
+    const checkout = document.getElementById('checkOut');
+
+    checkout.addEventListener('click', async () => {
+        try {
+            const response = await fetch('http://localhost:3001/basket/checkout', {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                window.location.href = 'paymentDone.html';
+            } else {
+                console.error('Failed to delete data');
+                alert('Error: Could not complete the checkout process.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    });
+    
+
+
+
+</script>
+
+</html>

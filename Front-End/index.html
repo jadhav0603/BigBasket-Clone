@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Basket Clone</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/746bcefbb6.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="container">
+        <!-- navigation Bar 1 -->
+
+        <div id="nav">
+            <div id="nav1">
+                <a href="index.html"><img id="logo" src="extra/images.png" /> </a>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchBar" placeholder="Search for Products..." onchange="searchHandler(this.value)">
+                <button id="selectLocation" onclick="fetchLocation()">
+                    <i class="fa-solid fa-compass"></i> &nbsp;
+                    Select Location
+                </button>
+                <a href="login.html"><button id="loginBtn">Login/Sign<br>Up </button> </a>
+                <a href="basket.html">
+                    <div id="basket">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </div>
+                </a>
+                <div id="basketCount"> 0 </div>
+            </div>
+        </div>
+
+
+
+        <!-- Navigation Bar 2 -->
+        <div id="nav2">
+            <select id="category" onchange="searchData(this.value)">
+                <option> shop by Category </option>
+                <option class="cat_list" value="vegetables">Fruits & Vegetables </option>
+                <option class="cat_list" value="beverage"> Beverages </option>
+                <option class="cat_list" value="bestSeller"> Baby Care </option>
+                <option class="cat_list" value="offers/fruit&veg"> Snacks & Branded Foods </option>
+                <option class="cat_list" value="offers/yourDailyStaples"> Beauty & Hygiene </option>
+                <option class="cat_list" disabled>Foodgrains, Oil & Masala</option>
+                <option class="cat_list" disabled>Bakery, Cakes & Dairy </option>
+                <option class="cat_list" disabled> Cleaning & Household </option>
+                <option class="cat_list" disabled> Kitchen, Garden & Pets </option>
+                <option class="cat_list" disabled> Eggs, Meat & Fish </option>
+                <option class="cat_list" disabled> Gourmet & World Food </option>
+                <option class="cat_list" disabled> Paan Corner </option>
+            </select>
+            <div id="list">
+                <ul id="myOffer">
+                    <li id="list1" onclick="searchData('offers/fruit&veg')">Exotic Fruits & V.. </li>
+                    <li id="list2" onclick="searchData('beverage')">Tea</li>
+                    <li id="list3" onclick="searchData('offers/yourDailyStaples')">Ghee</li>
+                    <li id="list4" onclick="searchData('offers/fruit&veg')">Nandini</li>
+                    <li id="list5" onclick="searchData('vegetables')">Fresh Vegetables</li>
+                    <li id="list6"> <i class="fa-solid fa-greater-than"></i><i class="fa-solid fa-greater-than"></i>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="line"> </div>
+
+            <a href="basket.html">
+                <button id="smartBasketBtn"><i class="fa-solid fa-arrows-rotate"></i>
+                    <p><b>Smart </b><br> basket</p>
+                </button>
+            </a>
+
+
+            <a href="bank.html"> <button id="offerBtn"><i class="fa-solid fa-tag"></i>Offers</button> </a>
+            
+        </div>
+    </div>
+    </div>
+
+
+    <div id="container2">
+        <div id="banchesOfBtn">
+            <button id="egg">EGG, MEAT AND FISH</button>
+            <button id="neupass"><img src="extra/hp_topstrip_m_250923_02.webp"></button>
+            <button id="ayurveda">AYURVEDA</button>
+            <button id="buyMoreSaveMore">BUY MORE SAVE MORE</button>
+            <button id="deal">DEALS OF THE WEEK</button>
+            <button id="combo">COMBO STORE</button>
+        </div>
+    </div>
+
+    <div id="dataDiv">
+        <div id="dataContainer">
+            <div id="smartBasketHeading">
+                <h3>My Smart Basket</h3>
+                <div id="prev-next-btn">
+                    <span onclick="searchData('vegetables')"><a href="#"> View All </a></span>
+                    <button id="prev" onclick="pagination('prev','vegetables',smartBasket)">&lt;</button>
+                    <button id="next" onclick="pagination('next','vegetables',smartBasket)">&gt;</button>
+                </div>
+            </div>
+            <div id="smartBasket">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dataDiv">
+        <div id="dataContainer" style="background-color: white;">
+
+            <div id="smartBasketHeading" style="background-color: white;">
+                <h3>Bank Offers</h3>
+            </div>
+            <div id="bankDetails">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dataDiv">
+        <div id="dataContainer">
+
+            <div id="smartBasketHeading">
+                <h3>Best Sellers</h3>
+                <div id="prev-next-btn">
+                    <span onclick="searchData('bestSeller')"><a href="#"> Show More </a></span>
+                    <button id="prev" onclick="pagination('prev','bestSeller',bestSeller)">&lt;</button>
+                    <button id="next" onclick="pagination('next','bestSeller',bestSeller)">&gt;</button>
+                </div>
+            </div>
+            <div id="bestSeller">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dataDiv">
+        <div id="dataContainer" style="background-color: white;">
+
+            <div id="smartBasketHeading" style="background-color: white;">
+                <h3>Top Offers</h3>
+            </div>
+            <div id="topOffers">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dataDiv">
+        <div id="dataContainer" style="background-color: white;">
+
+            <div id="smartBasketHeading" style="background-color: white;">
+                <h3>Fruits and Vegetables</h3>
+            </div>
+            <div id="fruit&veg">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dataDiv">
+        <div id="dataContainer" style="background-color: white;">
+
+            <div id="smartBasketHeading" style="background-color: white;">
+                <h3>Your Daily Staples</h3>
+            </div>
+            <div id="yourDailyStaples">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dataDiv">
+        <div id="dataContainer" style="background-color: white;">
+
+            <div id="smartBasketHeading" style="background-color: white;">
+                <h3>Beverages</h3>
+            </div>
+            <div id="beverage">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="slideShowContainer">
+
+    </div>
+
+
+    <div id="aboutUs">
+        <div>
+            <h4>bigbasket - online grocery store</h4>
+            <p>
+                Did you ever imagine that the freshest of fruits and vegetables, top-quality pulses and food grains,
+                dairy
+                products, and hundreds of branded items could be handpicked and delivered to your home, all at the click
+                of
+                a
+                button? In today's fast-paced world, bigbasket.com, India's pioneering online grocery store, continues
+                to
+                bring
+                a staggering array of over 40,000 products from more than 1,000 brands to the doorsteps of over 10
+                million
+                satisfied customers. From essential household cleaning products to the latest beauty and makeup trends,
+                bigbasket remains your one-stop shop for daily needs.
+            </p>
+
+            <p> In these times, we've eliminated the stress associated with shopping for daily essentials. You can now
+                effortlessly order all your household products and groceries online. Plus, the added convenience of
+                finding
+                all
+                your requirements at a single source, coupled with substantial savings, demonstrates that bigbasket,
+                India's
+                largest online supermarket, has transformed the way we shop for groceries. Online grocery shopping has
+                become
+                second nature. And when it comes to freshness, whether it's fruits and vegetables or dairy and meat,
+                we've
+                got
+                you covered! Easily obtain fresh eggs, meat, fish, and more with just a few clicks.
+            </p>
+
+            <p>
+                We now serve 300+ cities and towns across India and ensure swift delivery times, guaranteeing that all
+                your
+                groceries, snacks and branded foods reach you on time.
+            </p>
+
+            <p>
+                Slotted Delivery: Choose the most convenient delivery slot to receive your groceries, ranging from early
+                morning
+                delivery for early birds to late-night delivery for those on the night shift. bigbasket caters to every
+                schedule.
+            </p>
+
+            <p>
+                Instant delivery from bbnow: In response to the ever-increasing demand for convenience, bbnow by
+                bigbasket
+                offers lightning-fast grocery delivery, ensuring that your essentials are at your doorstep within 15-30
+                minutes.
+                Our quick delivery service has revolutionized the way you shop for groceries. Choose from 5000+ grocery
+                essentials. bbnow is available only in select cities.
+            </p>
+
+            <p>
+                Whether it's a last-minute dinner party or you simply need something urgently, we've got you covered.
+                This
+                service exemplifies our commitment to providing you with not just the widest range of products but also
+                the
+                fastest and most efficient shopping experience, making bigbasket.com the go-to destination for all your
+                immediate grocery needs.
+            </p>
+        </div>
+    </div>
+
+    <div id="contactUs">
+        <div id="list-container">
+            <div id="list-first">
+                <ul>
+                    <li> <b> Bigbasket </b> </li>
+                    <li> About Us </li>
+                    <li> Become A bigbasket Rider </li>
+                    <li> In News </li>
+                    <li> Green bigbasket </li>
+                    <li> Privacy Policy </li>
+                    <li> Affiliate </li>
+                    <li> Terms and Conditions </li>
+                    <li> Careers At bigbasket </li>
+                    <li> bb Instant </li>
+                    <li> bb Daily </li>
+                    <li> bb Blog </li>
+                    <li> bbnow </li>
+                </ul>
+            </div>
+
+            <div id="list-second">
+                <ul>
+                    <li> <b> Help </b> </li>
+                    <li> FAQs </li>
+                    <li> Contact Us </li>
+                    <li> bb Wallet FAQs </li>
+                    <li> bb Wallet T&Cs </li>
+                    <li> Vendor Connect </li>
+                </ul>
+            </div>
+
+            <div id="list-third">
+                <img src="extra/bigBasket.png" />
+                <div id="store">
+                    <img src="extra/playStore.png" />
+                    <img src="extra/appStore.png" />
+                </div>
+                <div id="icons">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-pinterest"></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+<script> 
+    document.getElementById('bankDetails').onclick = function(){
+        window.location.href = 'bank.html'
+    }
+
+    document.getElementById('topOffers').onclick = function(){
+        window.location.href = 'bank.html'
+    }
+</script>
+
+<script src="index.js"></script>
+<script src="login.js"> </script>
+<script src="export.js"> </script>
+
+
+</html>

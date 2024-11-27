@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<link rel="stylesheet" href="index.css">
+
+<style>
+  #navContainer{
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    margin-bottom: 20px;
+  }
+
+  #container {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  #terms {
+    width: 40vw;
+    justify-content: center;
+    font-size: 1vw;
+    padding: 0.5vw;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  #heading {
+    display: flex;
+    justify-content: center;
+  }
+
+  h2 {
+    border: 1px solid rgb(216, 212, 212);
+    color: rgb(243, 69, 69);
+    padding: 5px 20px;
+    font-family: sans-serif;
+    width: fit-content;
+  }
+
+  li {
+    margin: 15px 0px;
+    font-family: sans-serif;
+    color: rgb(85, 84, 84);
+  }
+
+  #footerImport{
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            margin-top: 100px;
+        }
+</style>
+
+<body>
+  <div id="navContainer">
+    <div id="importHeading"></div>
+  </div>
+  
+  
+  <div id="container">
+    <div id="terms">
+      <div id="heading">
+        <h2>TERMS AND CONDITIONS</h2>
+      </div>
+      <ul>
+        <li>Use code: SBICCMAR24</li>
+        <li>
+          10 % Instasnt Discount, Up to Rs 300 instant discount Minimum order
+          Rs.2000
+        </li>
+        <li>Offer valid only on SBI Credit Cards</li>
+        <li>Offer Not valid on Corporate, Cashback and Paytm SBI Cards</li>
+        <li>Offer valid between 26th to 31st MAR, 2024</li>
+        <li>Maximum discount of Rs.300 per card during the offer period</li>
+        <li>Valid once per card and once per user during the offer period</li>
+        <li>Offer applicable on website, app & m-site</li>
+        <li>Minimum order amount should be settled using bank card</li>
+        <li>Valid only on payments made online. Not valid on Card on Delivery</li>
+        <li>Voucher should be used at the time of placing the order</li>
+        <li>
+          If bigbasket wallet credit is used at the time of placing the order, the
+          voucher cannot be applied after the order is placed in 'Pay Now' option.
+        </li>
+        <li>Cannot be clubbed with any other offer</li>
+        <li>
+          bigbasket has the right to cancel orders if found to be of fraudulent
+          nature
+        </li>
+        <li>
+          bigbasket & SBI reserves the right to change / modify / add / delete any
+          of the terms and conditions of the offer at any time without notice
+        </li>
+        <li>Offer not applicable on products from bigbasket Specialty Store</li>
+        <li>
+          Excludes the following products and categories from redemption: Baby
+          Cereals, Baby Foods, Infant Formula, Organic Baby Foods and Srilalitha
+          Rice of all pack sizes
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+
+  <div id="footerImport"> </div>
+
+</body>
+
+<script src="index.js"></script>
+
+<script>
+  window.onload = function () {
+      let importData = localStorage.getItem('navbar');
+      document.getElementById('importHeading').innerHTML = importData;
+
+      let footerData = localStorage.getItem('footer');
+      document.getElementById('footerImport').innerHTML = footerData;
+  }
+
+</script>
+
+</html>
