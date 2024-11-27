@@ -21,7 +21,7 @@ let pageNo = 1;
 
 async function searchInCollections(searchTerm) {
     try {
-        const response = await fetch(`http://localhost:3001/search?searchTerm=${encodeURIComponent(searchTerm)}`);
+        const response = await fetch(`https://bigbasket-clone-app.onrender.com/search?searchTerm=${encodeURIComponent(searchTerm)}`);
         if (!response.ok) {
             throw new Error('Failed to fetch search results');
         }
@@ -92,7 +92,7 @@ function pagination(key, name, id) {
 
 async function fetchData(name, id, pageNo, limit) {
 
-    await fetch(`http://localhost:3001/${name}?_page=${pageNo}&_limit=${limit}`)
+    await fetch(`https://bigbasket-clone-app.onrender.com/${name}?_page=${pageNo}&_limit=${limit}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -164,7 +164,7 @@ function displayData(result, id) {
 //add product in basket
 async function addBasket(ele) {
     try {
-        let response = await fetch('http://localhost:3001/basket', {
+        let response = await fetch('https://bigbasket-clone-app.onrender.com/basket', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -198,7 +198,7 @@ async function addBasket(ele) {
 // }
 
 async function basketCount(){
-      await fetch('http://localhost:3001/basket/count')
+      await fetch('https://bigbasket-clone-app.onrender.com/basket/count')
       .then(response =>{
         return response.json()
       })
@@ -216,7 +216,7 @@ async function basketCount(){
 //bank offers 
 
 async function fetchOffer(key) {
-    let data = await fetch(`http://localhost:3001/offers/${key}`)
+    let data = await fetch(`https://bigbasket-clone-app.onrender.com/offers/${key}`)
     let result = await data.json();
     console.log(key);
     console.log(result);
@@ -238,7 +238,7 @@ function displayOffers(result, key) {
 
 
 async function slider() {
-    let data = await fetch("http://localhost:3001/slider")
+    let data = await fetch("https://bigbasket-clone-app.onrender.com/slider")
     let result = await data.json()
 
     console.log("slideData = ", result)

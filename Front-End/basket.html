@@ -123,7 +123,7 @@
     let dataContainer = document.getElementById('dataContainer')
 
     async function basketData() {
-        await fetch('http://localhost:3001/basket/getData')
+        await fetch('https://bigbasket-clone-app.onrender.com/basket/getData')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -195,7 +195,7 @@
     //function for handling deleting products
     async function deleteBasketProduct(ele){
         try{
-        const response = await fetch('http://localhost:3001/basket/deleteData',{
+        const response = await fetch('https://bigbasket-clone-app.onrender.com/basket/deleteData',{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -223,7 +223,7 @@
 
     // checkout.addEventListener(click,async()=>{
         
-    //     const response = await fetch('http://localhost:3001/checkout',{
+    //     const response = await fetch('https://bigbasket-clone-app.onrender.com/checkout',{
     //         method : 'DELETE'
     //     })
 
@@ -236,7 +236,7 @@
 
     checkout.addEventListener('click', async () => {
         try {
-            const response = await fetch('http://localhost:3001/basket/checkout', {
+            const response = await fetch('https://bigbasket-clone-app.onrender.com/basket/checkout', {
                 method: 'DELETE',
             });
 

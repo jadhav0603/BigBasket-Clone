@@ -8,7 +8,7 @@ console.log(optionValue);
             throw new Error("Invalid 'option' parameter in URL")
         }
 
-        let data = await fetch(`http://localhost:3001/${optionValue}?_page=1&_limit=15`)
+        let data = await fetch(`https://bigbasket-clone-app.onrender.com/${optionValue}?_page=1&_limit=15`)
         if(!data.ok){
             throw new Error(`HTTP error! status: ${response.status}`)
         }
