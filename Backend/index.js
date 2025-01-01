@@ -6,6 +6,7 @@ const cors = require('cors')
 const vegetablesRouter = require('./routes/vegetables.router')
 const offerRouter = require('./routes/offer.router')
 const basketRouter = require('./routes/basket.router')
+const searchData = require('./routes/search.router')
 
 const app = express()
 
@@ -15,6 +16,7 @@ app.use(cors())
 app.use('/', vegetablesRouter)
 app.use('/offers', offerRouter)
 app.use('/basket', basketRouter)
+app.use('/search', searchData)
 
 // Route to fetch all data from the bankDetails collection
 

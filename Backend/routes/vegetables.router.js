@@ -63,27 +63,34 @@ router.get('/', async (req,res)=>{
 })
 
 
-router.get('/search', async (req, res) => {
-    const { searchTerm } = req.query;
+router.get('/:searchTerm', async (req, res) => {
+    const { searchTerm } = req.params;
     if (!searchTerm) {
         return res.status(400).json({ error: 'Search term is required' });
     }
 
-    const collections = ['bestSeller', 'beverage', 'fruit&veg', 'vegetables', 'yourDailyStaples'];
-    try {
-        const promises = collections.map(async (collectionName) => {
-            const collection = mongoose.connection.collection(collectionName);
-            const data = await collection.find({ name: { $regex: searchTerm, $options: 'i' } }).toArray();
-            return { collectionName, data };
-        });
+    const collectionsArray = ['bestSeller', 'beverage', 'fruit&veg', 'vegetables', 'yourDailyStaples'];
+    
+    try{
+        const searchData = collectionsArray.map(async(ele)=>{
 
-        const results = await Promise.all(promises);
-        const filteredResults = results.filter(result => result.data.length > 0);
+            const Collection_Name = mongoose.connection.db.collection(ele)
+    
+            const data = await Collection_Name.find({product_name:{$regex: searchVal, $options:'i'}}).toArray();
 
-        res.json(filteredResults);
-    } catch (error) {
-        console.error('Error during search:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
+            return data.length > 0 ? { ele, data } : null
+        })
+
+        const result = (await Promise.all(searchData)).filter(Boolean);
+
+        if(!result || result.length === 0){
+            return res.status(400).json({error:"result not available"})
+        }
+
+        res.status(200).json(result)
+    }
+    catch(error){
+        res.status(500).json({err_msg: error})
     }
 });
 
