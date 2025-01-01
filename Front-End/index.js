@@ -19,32 +19,32 @@ let pageNo = 1;
 })();
 
 
-async function searchInCollections(searchTerm) {
-    try {
-        const response = await fetch(`https://bigbasket-clone-app.onrender.com/search?searchTerm=${encodeURIComponent(searchTerm)}`);
-        if (!response.ok) {
-            throw new Error('Failed to fetch search results');
-        }
-        const results = await response.json();
-        console.log('Search results:', results);
-        return results;
-    } catch (error) {
-        console.error('Error fetching search results:', error);
-        return [];
-    }
-}
+// async function searchInCollections(searchTerm) {
+//     try {
+//         const response = await fetch(`https://bigbasket-clone-app.onrender.com/search?searchTerm=${encodeURIComponent(searchTerm)}`);
+//         if (!response.ok) {
+//             throw new Error('Failed to fetch search results');
+//         }
+//         const results = await response.json();
+//         console.log('Search results:', results);
+//         return results;
+//     } catch (error) {
+//         console.error('Error fetching search results:', error);
+//         return [];
+//     }
+// }
 
 async function searchHandler(searchTerm) {
-    const results = await searchInCollections(searchTerm);
-    if (results.length === 0) {
-        alert('No results found for your search term.');
-        return;
-    }
-
-    console.log('saving results : ', results)
-
-    localStorage.setItem('searchResults', JSON.stringify(results)); // Save results in localStorage
-    window.location.href = 'searchData.html'; // Redirect to results page
+    console.log(searchTerm)
+    await fetch(`https://bigbasket-clone-app.onrender.com/search/${searchTerm}`)
+    .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => console.log(data))
+      .catch(error => console.error('Error fetching data:', error));
 }
 
 
